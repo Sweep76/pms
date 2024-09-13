@@ -44,7 +44,7 @@ const PatientForm = () => {
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
       <section className = "mb-12 space y-4">
         <h1 className="header"> Hi there 👋</h1>
-        <p className="text-dark-700">Schedule your first appointment</p>
+        <p className="text-dark-600">Schedule your first appointment</p>
       </section>
 
       <CustomFormField
@@ -55,6 +55,16 @@ const PatientForm = () => {
         placeholder="John Doe"
         iconSrc="/assets/icons/user.svg"
         iconAlt="user"
+      />
+
+      <CustomFormField
+        fieldType={FormFieldType.INPUT} 
+        control={form.control}
+        name="email"
+        label="Email"
+        placeholder="johndoe@jsmastery.pro"
+        iconSrc="/assets/icons/email.svg"
+        iconAlt="email"
       />
 
       <Button type="submit">Submit</Button>
