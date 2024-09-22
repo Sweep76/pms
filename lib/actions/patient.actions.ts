@@ -1,1 +1,3 @@
-export const createuser = async (user: CreateUserParams)
+export const createuser = async (user: CreateUserParams) => {
+    
+}
