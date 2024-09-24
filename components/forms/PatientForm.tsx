@@ -25,7 +25,7 @@ export enum FormFieldType {
 export const PatientForm = () => { //stack overflow
   // 1. Define your form.
   const router = useRouter();
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
@@ -38,7 +38,7 @@ export const PatientForm = () => { //stack overflow
  
   // 2. Define a submit handler.
   async function onSubmit({ name, email, phone }: z.infer<typeof UserFormValidation>) {
-    setisLoading(true);
+    setIsLoading(true);
 
     try {
       const userData = { name, email, phone };
@@ -49,7 +49,7 @@ export const PatientForm = () => { //stack overflow
     } catch (error) {
       console.log(error);
     }
-    setisLoading(false);
+    setIsLoading(false);
   };
 
   return (
