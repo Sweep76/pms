@@ -1,8 +1,9 @@
+import RegisterForm from '@/components/forms/RegisterForm'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Registration = () => {
+const Register = () => {
   return (
     <div className="flex h-screen max-h-screen">
       {/* TODO: OTP Verification | Passkey Modal */}
@@ -17,7 +18,7 @@ const Registration = () => {
             className="mb-12 h-10 w-fit"
           />
 
-          
+          <RegisterForm />
 
           <div className= "text-14-regular mt-20 flex justify-between">
             <p className='justify-items-end text-dark-600 xl:text-left'>
@@ -41,4 +42,4 @@ const Registration = () => {
   )
 }
 
-export default Registration
+export default Register
