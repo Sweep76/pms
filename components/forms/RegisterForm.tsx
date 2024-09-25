@@ -62,6 +62,7 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
         fieldType={FormFieldType.INPUT} 
         control={form.control}
         name="name"
+        label="Full Name"
         placeholder="John Doe"
         iconSrc="/assets/icons/user.svg"
         iconAlt="user"
