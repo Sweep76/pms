@@ -103,8 +103,8 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
             label="Gender"
             renderSkeleton={(field) => (
               <FormControl>
-                <RadioGroup className="flex h-11 gap-6 xl:justify-between">
-
+                <RadioGroup className="flex h-11 gap-6 xl:justify-between" onValueChange={field.onChange} defaultValue={field.value}>
+ 
                 </RadioGroup>
               </FormControl>
             )}
