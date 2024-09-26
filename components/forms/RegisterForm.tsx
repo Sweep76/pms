@@ -110,7 +110,7 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
                     <div key={option} className="radio-group">
                       <RadioGroupItem value={option} id={option} />
                       <Label htmlFor={option} className="cursor-pointer">
-                        
+                        {option} 
                       </Label>
                     </div>
                   ))}
