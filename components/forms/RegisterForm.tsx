@@ -12,7 +12,9 @@ import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
-import { RadioGroup } from "../ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { GenderOptions } from "@/constants";
+import { Label } from "../ui/label";
 
  
 export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
@@ -104,7 +106,14 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
             renderSkeleton={(field) => (
               <FormControl>
                 <RadioGroup className="flex h-11 gap-6 xl:justify-between" onValueChange={field.onChange} defaultValue={field.value}>
- 
+                  {GenderOptions.map((option) => (
+                    <div key={option} className="radio-group">
+                      <RadioGroupItem value={option} id={option} />
+                      <Label htmlFor={option} className="cursor-pointer">
+                        
+                      </Label>
+                    </div>
+                  ))}
                 </RadioGroup>
               </FormControl>
             )}
