@@ -21,7 +21,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { render } from "react-dom"
-import { Select } from "./ui/select"
+import { Select, SelectContent, SelectTrigger } from "./ui/select"
 import { SelectValue } from "@radix-ui/react-select"
 
 interface CustomProps {
@@ -104,11 +104,17 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     case FormFieldType.SELECT:
       return (
         <FormControl>
-          <Select onValueChange={field.change}
+          <Select onValueChange={field.onChange}
           defaultValue={field.value}>
-            <FormControl className="shad-select-trigger">
-              <SelectValue placeholder={placeholder} />
+            <FormControl>
+              <SelectTrigger className="shad-select-trigger">
+                <SelectValue placeholder={placeholder} />
+              
+              </SelectTrigger>
             </FormControl>
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
           </Select>
         </FormControl>
       )
