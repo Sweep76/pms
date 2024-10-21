@@ -13,8 +13,10 @@ import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { GenderOptions } from "@/constants";
+import { Doctors, GenderOptions } from "@/constants";
 import { Label } from "../ui/label";
+import { SelectItem } from "@radix-ui/react-select";
+import Image from "next/image";
 
  
 export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
@@ -168,7 +170,22 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
             name="primaryPhysician"
             label="Primary Physician"
             placeholder="Select a physician"
-        />
+        >
+          {Doctors.map((doctor) => (
+            <SelectItem key={doctor.name} value={doctor.name}>
+              <div className="flex cursor-pointer items-center gap-2">
+                <Image
+                  src={doctor.image}
+                  width={32}
+                  height={32}
+                  alt={doctor.name}
+                  className="rounded-full border border-dark-500"
+                />
+                <p>{doctor.name}</p>
+              </div>
+            </SelectItem>
+          ))}
+        </CustomFormField>
 
       <div className="flex flex-col gap-6 xl:flex-row">
         
