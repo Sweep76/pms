@@ -15,7 +15,7 @@ import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Doctors, GenderOptions } from "@/constants";
 import { Label } from "../ui/label";
-import { SelectItem } from "@radix-ui/react-select";
+import { SelectItem } from "../ui/select";
 import Image from "next/image";
 
  
