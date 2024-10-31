@@ -52,7 +52,7 @@ const RegisterForm = ({ user }: {user: User}) => { //stack overflow
     try {
       const patientData = {
         ...values,
-        userid: user.$id,
+        userId: user.$id,
         birthDate: new Date(values.birthDate),
         identificationDocument: formData,
       }
