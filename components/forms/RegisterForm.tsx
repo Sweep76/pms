@@ -20,8 +20,7 @@ import Image from "next/image";
 import FileUploader from "../FileUploader";
 
  
-export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
-  // 1. Define your form.
+const RegisterForm = ({ user }: {user: User}) => { //stack overflow
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,7 +33,6 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
     },
   })
  
-  // 2. Define a submit handler.
   async function onSubmit({ name, email, phone }: z.infer<typeof UserFormValidation>) {
     setIsLoading(true);
 
@@ -306,7 +304,7 @@ export const RegisterForm = ({ user }: {user: User}) => { //stack overflow
         name="privacyConsent"
         label="I consent to privacy policy"
       />
-      
+
       <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
     </form>
   </Form>
