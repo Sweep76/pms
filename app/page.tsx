@@ -10,7 +10,7 @@ export default function Home() {
       {/* TODO: OTP Verification | Passkey Modal */}
 
       <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[496px">
+        <div className="sub-container max-w-[496px]">
           <Image 
             src="/assets/icons/logo-full.svg"
             height={1000}
@@ -33,7 +33,7 @@ export default function Home() {
       </section>
 
       <Image 
-        src="/assets/images/onboarding-img.png"
+        src="/assets/images/onboarding.png"
         height={1000}
         width={1000}
         alt="patient"
