@@ -8,13 +8,14 @@ import { Form } from "@/components/ui/form"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
 import { use, useState } from "react"
-import { AppointmentFormValidation } from "@/lib/validation"
+import { getAppointmentSchema } from "@/lib/validation" // removed AppointmentFormValidation
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { Doctors } from "@/constants";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
+import { createAppointment } from "@/lib/actions/appointment.actions";
 
  export const AppointmentForm = ({ //stack overflow guide
   userId, patientId, type
@@ -25,6 +26,8 @@ import Image from "next/image";
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  const AppointmentFormValidation = getAppointmentSchema(type);
 
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
@@ -53,16 +56,32 @@ import Image from "next/image";
         status = 'pending';
         break;
     }
-
     try {
-      const userData = { name, email, phone };
+      if(type === 'create' && patientId) {
+        console.log('IM HERE')
 
-      const user = await createUser(userData);
+        const appointmentData = {
+          userId,
+          patient: patientId,
+          primaryPhysician: values.primaryPhysician,
+          schedule: new Date(values.schedule),
+          reason: values.reason!,
+          note: values.note,
+          status: status as Status,
+        }
+        
+        const appointment = await createAppointment(appointmentData);
+        
+        if(appointment) {
+          form.reset();
+          router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
+        }
+      }
 
-      if(user) router.push(`/patients/${user.$id}/register`)
     } catch (error) {
       console.log(error);
     }
+
     setIsLoading(false);
   };
 
