@@ -38,8 +38,21 @@ import Image from "next/image";
   })
  
   // 2. Define a submit handler.
-  async function onSubmit({ name, email, phone }: z.infer<typeof AppointmentFormValidation>) {
+  async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
     setIsLoading(true);
+
+    let status;
+    switch (type) {
+      case 'schedule':
+        status = 'scheduled';
+        break;
+      case 'cancel':
+        status = 'cancelled';
+        break;
+      default:
+        status = 'pending';
+        break;
+    }
 
     try {
       const userData = { name, email, phone };
