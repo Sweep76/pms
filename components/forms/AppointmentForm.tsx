@@ -65,8 +65,8 @@ import Image from "next/image";
             fieldType={FormFieldType.SELECT} 
             control={form.control}
             name="primaryPhysician"
-            label="Primary Physician"
-            placeholder="Select a physician"
+            label="Doctor"
+            placeholder="Select a doctor"
         >
           {Doctors.map((doctor) => (
             <SelectItem key={doctor.name} value={doctor.name}>
@@ -83,7 +83,16 @@ import Image from "next/image";
             </SelectItem>
           ))}
         </CustomFormField>
-        </>
+
+        <CustomFormField 
+          fieldType={FormFieldType.DATE_PICKER}
+          control={form.control}
+          name="schedule"
+          label="Expected appointment date"
+          showTimeSelect
+          dateFormmat="MM/dd/yyyy - h:mm aa"
+        />
+      </>
       )}
 
       <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
