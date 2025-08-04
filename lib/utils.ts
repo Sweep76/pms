@@ -35,7 +35,7 @@ export const formatDateTime = (dateString: Date | string, timeZone: string = Int
     year: "numeric", // numeric year (e.g., '2023')
     day: "numeric", // numeric day of the month (e.g., '25')
     timeZone: timeZone, // use the provided timezone
-  };    
+  };
 
   const timeOptions: Intl.DateTimeFormatOptions = {
     hour: "numeric", // numeric hour (e.g., '8')
